@@ -17,7 +17,7 @@ namespace LibraryManagement.Models
         public decimal Price { get; set; }
         public string PublisherName { get; set; }
 
-        public Loan Loan { get; set; }
+        public ICollection<Loan> Loan { get; set; }
 
     }
 }

@@ -13,6 +13,7 @@ namespace LibraryManagement.Models
         public string ISBN { get; set; }
 
         public Book Book { get; set; }
+        public ICollection<Students> Students { get; set; }
 
     }
 }

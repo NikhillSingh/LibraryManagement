@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LibraryManagement.Models;
 
 namespace LibraryManagement.Data
 {
@@ -12,5 +13,7 @@ namespace LibraryManagement.Data
             : base(options)
         {
         }
+        public DbSet<LibraryManagement.Models.Book> Book { get; set; }
+        public DbSet<LibraryManagement.Models.Students> Students { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using LibraryManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LibraryManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211102215127_BooksandLoanTableCreated")]
+    partial class BooksandLoanTableCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,41 +70,6 @@ namespace LibraryManagement.Data.Migrations
                     b.HasIndex("BookISBN");
 
                     b.ToTable("Loan");
-                });
-
-            modelBuilder.Entity("LibraryManagement.Models.Students", b =>
-                {
-                    b.Property<int>("StudentsID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Contact")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("LoanID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearLevel")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentsID");
-
-                    b.HasIndex("LoanID");
-
-                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -314,15 +281,6 @@ namespace LibraryManagement.Data.Migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("LibraryManagement.Models.Students", b =>
-                {
-                    b.HasOne("LibraryManagement.Models.Loan", "Loan")
-                        .WithMany("Students")
-                        .HasForeignKey("LoanID");
-
-                    b.Navigation("Loan");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -377,11 +335,6 @@ namespace LibraryManagement.Data.Migrations
             modelBuilder.Entity("LibraryManagement.Models.Book", b =>
                 {
                     b.Navigation("Loan");
-                });
-
-            modelBuilder.Entity("LibraryManagement.Models.Loan", b =>
-                {
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
