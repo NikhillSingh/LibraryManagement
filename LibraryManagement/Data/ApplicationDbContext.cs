@@ -17,5 +17,6 @@ namespace LibraryManagement.Data
         public DbSet<LibraryManagement.Models.Students> Students { get; set; }
         public DbSet<LibraryManagement.Models.Author> Author { get; set; }
         public DbSet<LibraryManagement.Models.Publisher> Publisher { get; set; }
+        public DbSet<LibraryManagement.Models.Loan> Loan { get; set; }
     }
 }
